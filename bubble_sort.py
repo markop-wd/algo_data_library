@@ -1,19 +1,10 @@
-import random
+def sort(value_list):
+    value_list_length = len(value_list)
+    for run in range(value_list_length):
+        for x_pos in range(value_list_length - run - 1):
+            x = value_list[x_pos]
+            y = value_list[x_pos + 1]
+            if x > y:
+                value_list[x_pos], value_list[x_pos + 1] = value_list[x_pos + 1], value_list[x_pos]
 
-random_values = [random.randint(1, 100) for _ in range(10)]
-
-print(random_values)
-
-for run in range(0, len(random_values)):
-    for x_pos in range(len(random_values) - run):
-        x = random_values[x_pos]
-        y_pos = x_pos + 1
-        try:
-            y = random_values[y_pos]
-        except IndexError:
-            break
-        if x > y:
-            random_values[x_pos], random_values[y_pos] = random_values[y_pos], random_values[x_pos]
-            x_pos, y_pos = y_pos, x_pos
-
-
+    return value_list
