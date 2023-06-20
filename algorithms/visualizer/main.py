@@ -1,3 +1,6 @@
+"""
+https://python.plainenglish.io/build-a-sorting-algorithm-visualizer-in-python-f6f4afb1c98a
+"""
 from tkinter import *
 from tkinter import ttk
 import random
