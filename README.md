@@ -1,1 +1,1 @@
-Side project implementing various sort and search algorithms
+Side project implementing, from scratch in Python, various data structures and sort and search algorithms
