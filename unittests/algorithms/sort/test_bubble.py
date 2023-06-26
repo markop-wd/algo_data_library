@@ -1,15 +1,18 @@
 import random
-from unittests.algorithms.sort.sorting_tests import SortingTests
+from .sorting_tests import SortingTests
 from algorithms.sort import bubble_sort
 
 
 class TestBubble(SortingTests):
 
     def test_regular(self):
-        super().test_regular(bubble_sort)
+        random_values = [random.randint(1, 100) for _ in range(10)]
+        self.verify_sorted(bubble_sort, random_values)
 
     def test_small_list(self):
-        super().test_small_list(bubble_sort)
+        random_values = [random.randint(1, 100) for _ in range(2)]
+        self.verify_sorted(bubble_sort, random_values)
 
     def test_empty(self):
-        super().test_empty(bubble_sort)
+        random_values = []
+        self.verify_sorted(bubble_sort, random_values)
