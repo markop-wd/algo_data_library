@@ -1,4 +1,4 @@
-class SLNode:
+class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
@@ -6,7 +6,7 @@ class SLNode:
 
 class LinkedList:
     def __init__(self, value):
-        node = SLNode(value)
+        node = Node(value)
         self.head = node
         self.tail = node
         self.length = 1
@@ -18,7 +18,7 @@ class LinkedList:
             temp = temp.next
 
     def append(self, value):
-        new_node = SLNode(value)
+        new_node = Node(value)
         if self.head is None:
             self.head = new_node
             self.tail = new_node
@@ -26,18 +26,19 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self.length += 1
+        return True
 
     def pop(self):
         if self.length == 0:
             return None
         else:
             temp = self.head
-            pre = self.head
+            new_tail = self.head
             while temp.next:
-                pre = temp
+                new_tail = temp
                 temp = temp.next
 
-            self.tail = pre
+            self.tail = new_tail
             self.tail.next = None
             self.length -= 1
             if self.length == 0:
@@ -47,7 +48,7 @@ class LinkedList:
             return temp
 
     def prepend(self, value):
-        new_node = SLNode(value)
+        new_node = Node(value)
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
@@ -91,7 +92,7 @@ class LinkedList:
         elif index == self.length:
             return self.append(value)
         else:
-            new_node = SLNode(value)
+            new_node = Node(value)
             temp = self.get(index - 1)
 
             new_node.next = temp.next
