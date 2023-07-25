@@ -79,10 +79,11 @@ class LinkedList:
 
     def set_value(self, index, value):
         temp = self.get(index)
-        if temp:
-            temp.value = value
-            return True
-        return False
+        if not temp:
+            return False
+
+        temp.value = value
+        return True
 
     def insert(self, index, value):
         if index < 0 or index > self.length:
@@ -146,9 +147,33 @@ class LinkedList:
                 return True
         return False
 
+    def make_empty(self):
+        self.head = None
+        self.length = 0
 
-def find_kth_from_end(linked_list, value):
-    temp_slow = temp_fast = linked_list.head
+    def reverse_between(self, m, n):
+        if self.length <= 1:
+            return None
+
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        for _ in range(m):
+            prev = prev.next
+
+        current = prev.next
+        for _ in range(n - m):
+            temp = current.next
+            current.next = temp.next
+            temp.next = prev.next
+            prev.next = temp
+
+        self.head = dummy.next
+
+
+def find_kth_from_end(l_list, value):
+    temp_slow = temp_fast = l_list.head
     for _ in range(value):
         if temp_fast is None:
             return None
@@ -159,6 +184,3 @@ def find_kth_from_end(linked_list, value):
         temp_fast = temp_fast.next
 
     return temp_slow
-
-
-
