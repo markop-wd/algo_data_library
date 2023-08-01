@@ -171,6 +171,54 @@ class LinkedList:
 
         self.head = dummy.next
 
+    def partition_list(self, x):
+        if not self.head:
+            return None
+
+        dummy1 = Node(0)
+        dummy2 = Node(0)
+
+        prev1 = dummy1
+        prev2 = dummy2
+
+        current = self.head
+
+        while current:
+            if current.value < x:
+                prev1.next = current
+                prev1 = current
+            else:
+                prev2.next = current
+                prev2 = current
+            current = current.next
+        prev1.next = None
+        prev2.next = None
+
+        prev1.next = dummy2.next
+        self.head = dummy1.next
+
+    def remove_duplicates(self):
+        values = set()
+        prev = Node(0)
+        current = self.head
+
+        while current:
+            if current.value in values:
+                prev.next = current.next
+                self.length -= 1
+            else:
+                values.add(current.value)
+                prev = current
+            current = current.next
+
+    def binary_to_decimal(self):
+        num = 0
+        current = self.head
+        while current:
+            num = num * 2 + current.value
+            current = current.next
+        return num
+
 
 def find_kth_from_end(l_list, value):
     temp_slow = temp_fast = l_list.head
@@ -184,3 +232,4 @@ def find_kth_from_end(l_list, value):
         temp_fast = temp_fast.next
 
     return temp_slow
+
