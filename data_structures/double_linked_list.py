@@ -127,3 +127,11 @@ class DoubleLinkedList:
         self.length -= 1
         return temp
 
+    def swap_first_last(self):
+        if self.length == 0:
+            return False
+        head_value = self.head.value
+        tail_value = self.tail.value
+        self.head.value = tail_value
+        self.tail.value = head_value
+        return True
