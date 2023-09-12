@@ -31,16 +31,17 @@ class DoubleLinkedList:
         return True
 
     def pop(self):
-        temp_value = self.tail
         if self.length == 0:
             return None
-        elif self.length == 1:
+        temp = self.tail
+        if self.length == 1:
             self.head = None
             self.tail = None
         else:
-            temp = self.tail
             self.tail = self.tail.previous
             self.tail.next = None
             temp.previous = None
         self.length -= 1
-        return temp_value.value
+        return temp
+
+
