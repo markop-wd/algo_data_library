@@ -76,7 +76,7 @@ class DoubleLinkedList:
         if index < 0 or index >= self.length:
             return None
         temp = self.head
-        if index < self.length/2:
+        if index < self.length / 2:
             for _ in range(index):
                 temp = temp.next
         else:
@@ -84,3 +84,10 @@ class DoubleLinkedList:
             for _ in range(self.length - 1, index, -1):
                 temp = temp.previous
         return temp
+
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
