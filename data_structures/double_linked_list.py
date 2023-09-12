@@ -93,7 +93,7 @@ class DoubleLinkedList:
         return False
 
     def insert(self, index, value):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             return False
         if index == 0:
             return self.prepend(value)
@@ -101,7 +101,7 @@ class DoubleLinkedList:
             return self.append(value)
 
         new_node = Node(value)
-        before = self.get(index)
+        before = self.get(index - 1)
         after = before.next
 
         new_node.previous = before
@@ -126,5 +126,4 @@ class DoubleLinkedList:
         temp.previous = None
         self.length -= 1
         return temp
-
 
