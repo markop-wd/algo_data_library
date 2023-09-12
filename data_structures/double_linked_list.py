@@ -135,3 +135,15 @@ class DoubleLinkedList:
         self.head.value = tail_value
         self.tail.value = head_value
         return True
+
+    def reverse(self):
+        current_node = self.head
+        while current_node:
+            temp_next = current_node.next
+            current_node.next = current_node.previous
+            current_node.previous = temp_next
+            current_node = temp_next
+
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
