@@ -159,3 +159,25 @@ class DoubleLinkedList:
             forward_node = forward_node.next
             backward_node = backward_node.prev
         return True
+
+    def swap_pairs(self):
+        if self.length <= 1:
+            return None
+        dummy = Node(0)
+        dummy.next = self.head
+        previous_node = dummy
+        while self.head and self.head.next:
+            first_node = self.head
+            second_node = self.head.next
+            previous_node.next = second_node
+            first_node.next = second_node.next
+            second_node.next = first_node
+            second_node.previous = previous_node
+            first_node.previous = second_node
+            if first_node.next:
+                first_node.next.previous = first_node
+            self.head = first_node.next
+            previous_node = first_node
+        self.head = dummy.next
+        if self.head:
+            self.head.previous = None
